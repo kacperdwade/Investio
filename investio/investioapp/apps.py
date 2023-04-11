@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class InvetioappConfig(AppConfig):
+class InvestioappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'invetioapp'
+    name = 'investioapp'
