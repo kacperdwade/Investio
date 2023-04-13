@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">
+            {% if user.is_authenticated %}
+            <h1>Witaj {{user.username}}</h1>
+            {% else %}
+            <h1>Witaj</h1>
+            {% endif %}
+        </h1>
+
+        <p class="lead">All investments in one place!</p>
+        <hr class="my-4">
+        <p>You've found the right place! Checkout the investments near you będziesz bogaty kuuuuuurwa!!!!</p>
+        <a class="btn btn-warning btn-lg" href="/cafes" role="button">Show Me!</a>
+    </div>
+    <br>
+</div>
+
+{% endblock %}
