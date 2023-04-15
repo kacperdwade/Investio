@@ -3,13 +3,17 @@
 {% block title %}Create an Investment{% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div style="padding-top: 60px;">
+
+<div class="d-flex justify-content-center">
+<div class="jumbotron w-50 p-3 forms-margin-padding">
     <form method="post" action="/addInvestment/" class="form-group addContent">
 
         {% csrf_token %}
         {{ form|crispy }}
+        <div class="btn-submit-form">
         <button type="submit" class="btn btn-success">Add Investment</button>
-
+        </div>
     </form>
+</div>
 </div>
 {% endblock %}

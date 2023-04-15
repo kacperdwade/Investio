@@ -7,12 +7,17 @@ Login Here
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="jumbotron text-center ">
-    <form method="post" class="form-group w-25 p-3">
+<div class="d-flex justify-content-center">
+<div class="jumbotron forms-margin-padding">
+    <form method="post" class="form-group">
         {% csrf_token %}
         {{form|crispy}}
         <p>Don't have an account? Create one <a href="/register/">HERE</a></p>
+        <div class="btn-submit-form">
         <button type="submit" class="btn btn-success">Login</button>
+        </div>
     </form>
 </div>
+</div>
+
 {% endblock %}

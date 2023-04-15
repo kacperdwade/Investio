@@ -1,1 +1,9 @@
 
+.forms-margin-padding{
+    margin: 100px 0px;
+    padding: 20px 32px;
+}
+
+.btn-submit-form{
+    text-align: right
+}
