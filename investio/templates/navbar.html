@@ -7,7 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'main:home' %}">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -28,6 +28,9 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
+                    {% load static %}
+                    <img style="width: 20px" src="{% static 'images/user_default.png' %}" alt="user default photo">
+                    <!--User icons created by Smashicons - Flaticon-->
                     {{user.username}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
