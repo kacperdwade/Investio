@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Investment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="investment", null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="todolist", null=True)
     name = models.CharField(max_length=50)
     img = models.CharField(max_length=200)
     location = models.CharField(max_length=50)
