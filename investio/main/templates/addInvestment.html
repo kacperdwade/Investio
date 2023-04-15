@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Create an Investment{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div style="padding-top: 60px;">
+    <form method="post" action="/addInvestment/" class="form-group addContent">
+
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Add Investment</button>
+
+    </form>
+</div>
+{% endblock %}
