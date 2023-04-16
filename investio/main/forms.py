@@ -2,7 +2,7 @@ from django import forms
 
 class AddNewInvestment(forms.Form):
     name = forms.CharField(label="Name", max_length=50)
-    img = forms.ImageField()
+    img = forms.ImageField(required=False)
     location = forms.CharField(label="Location", max_length=50)
     about = forms.CharField(label="Description", max_length=200)
     price = forms.FloatField(label="Price")

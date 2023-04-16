@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1 class="display-4">
+            {% if user.is_authenticated %}
+            <h1>Witaj {{user.username}}</h1>
+            {% else %}
+            <h1>Witaj</h1>
+            {% endif %}
+        </h1>
+    </div>
+    <br>
+</div>
+
+{% endblock %}

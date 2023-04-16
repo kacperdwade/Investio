@@ -1,12 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import AddNewInvestment
 from .models import Investment
+
+
 # Create your views here.
 def home(request):
-    context= {
-        'user': request.user
+    investments = list(Investment.objects.all())
+    context = {
+        'user': request.user,
+        'investments': investments,
     }
     return render(request, 'home.html', context)
+
 
 def addInvestment(request):
     form = AddNewInvestment()
@@ -24,8 +29,24 @@ def addInvestment(request):
             )
             new_investment.save()
             request.user.investment.add(new_investment)
+            return redirect('main:home')
     context = {
         'user': request.user,
         'form': form,
     }
-    return render(request, 'addInvestment.html', context)
+    return render(request, 'add_investment.html', context)
+
+
+def userInvestments(request):
+    investments = list(request.user.investment.all())
+    context = {
+        'user': request.user,
+        'investments': investments,
+    }
+    return render(request, 'user_investments.html', context)
+
+def about(request):
+    context = {
+        'user': request.user,
+    }
+    return render(request, 'about.html', context)

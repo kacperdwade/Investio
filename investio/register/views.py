@@ -47,3 +47,9 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect("main:home")
+
+def user_profile(request):
+    context = {
+        'user': request.user,
+    }
+    return render(request=request, template_name="login.html", context=context)

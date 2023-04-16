@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                 ('ror', models.IntegerField()),
                 ('tor', models.IntegerField()),
                 ('date', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='todolist', to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='investments', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

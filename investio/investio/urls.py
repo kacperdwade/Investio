@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('register.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path('', include('django.contrib.auth.urls')),
 ]
 #TODO check on production

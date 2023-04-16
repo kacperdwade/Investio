@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <div class="jumbotron text-center">
@@ -19,23 +19,31 @@
     </div>
     <br>
 </div>
-{% for item in user.investment.all %}
-    <div class="investment-card">
-    <div class="card mb-1" >
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <img src="{{ item.img.url }}" class="card-img" alt="...">
-        </div>
-        <div class="col-md-10">
-          <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.about }}</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-{% endfor %}
 
+{% for item in investments %}
+    <div class="investment-card">
+        <a href="investment_detail">
+        <div class="card mb-1">
+            <div class="row no-gutters">
+                <div class="col-md-2">
+                    {% if item.img.url is not null %}
+                    <img src="{{ item.img.url }}" class="card-img" alt="investment profile photo">
+                    {% else %}
+                    <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
+                         alt="investment default photo">
+                    {% endif %}
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.about }}</p>
+                        <p class="card-text"><small class="text-muted">Created {{ item.date }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+
+{% endfor %}
 {% endblock %}
