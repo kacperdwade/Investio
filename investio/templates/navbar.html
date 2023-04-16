@@ -16,31 +16,32 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'main:add_investment' %}">+ Add Investment</a>
+                <a class="nav-link" href="{% url 'dashboard:add_investment' %}">+ Add Investment</a>
             </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="/login">+ Add Investment</a>
             </li>
             {% endif %}
-            
+
             {% if user.is_authenticated %}
             <div class="btn-group dropleft">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <img style="width: 20px" src="{% static 'images/user_default.png' %}" alt="user default photo">
-                    <!--User icons created by Smashicons - Flaticon-->
-                    {{user.username}}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'register:profile' %}">Profile</a>
-                    <a class="dropdown-item" href="{% url 'main:user_investments' %}">Your investments</a>
-                    <a class="dropdown-item" href="{% url 'dashboard:home' %}">Dashboard</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/logout">Logout</a>
-                </div>
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img style="width: 20px" src="{% static 'images/user_default.png' %}" alt="user default photo">
+                        <!--User icons created by Smashicons - Flaticon-->
+                        {{user.username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'dashboard:home' %}">Dashboard</a>
+                        <a class="dropdown-item" href="{% url 'dashboard:user_investments' %}">Your investments</a>
+                        <a class="dropdown-item" href="{% url 'register:profile' %}">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </li>
             </div>
             {% else %}
             <li class="nav-item my-2 my-lg-0 mr-auto">

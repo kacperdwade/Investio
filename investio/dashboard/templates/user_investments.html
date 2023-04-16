@@ -10,7 +10,7 @@
             <div class="card mb-1">
                 <div class="row no-gutters">
                     <div class="col-md-2">
-                        {% if item.img.url %}
+                        {% if item.img.url is not null %}
                         <img src="{{ item.img.url }}" class="card-img" alt="investment profile photo">
                         {% else %}
                         <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
