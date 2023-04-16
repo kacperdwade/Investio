@@ -52,4 +52,4 @@ def user_profile(request):
     context = {
         'user': request.user,
     }
-    return render(request=request, template_name="login.html", context=context)
+    return render(request=request, template_name="profile.html", context=context)

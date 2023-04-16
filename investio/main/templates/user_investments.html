@@ -6,7 +6,7 @@
     {% for item in investments %}
 
     <div class="investment-card">
-        <a href="investment_detail" class="forms-margin-padding">
+        <a href="{{ item.get_absolute_url }}">
             <div class="card mb-1">
                 <div class="row no-gutters">
                     <div class="col-md-2">

@@ -31,7 +31,7 @@ a:active {
 }
 
 .investment-card {
-    width: 80%;
+    width: 50%;
     margin: 0 auto; /* Added */
     float: none; /* Added */
     margin-bottom: 10px; /* Added */

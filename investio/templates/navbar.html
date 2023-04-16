@@ -16,7 +16,7 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard:add_investment' %}">+ Add Investment</a>
+                <a class="nav-link" href="{% url 'main:add_investment' %}">+ Add Investment</a>
             </li>
             {% else %}
             <li class="nav-item">
@@ -36,7 +36,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'dashboard:home' %}">Dashboard</a>
-                        <a class="dropdown-item" href="{% url 'dashboard:user_investments' %}">Your investments</a>
+                        <a class="dropdown-item" href="{% url 'main:user_investments' %}">Your investments</a>
                         <a class="dropdown-item" href="{% url 'register:profile' %}">Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout">Logout</a>

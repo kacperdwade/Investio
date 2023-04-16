@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.
@@ -18,4 +19,10 @@ class Investment(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("main:investment-detail-view", kwargs={"id_": self.id})
 
+    #
+    def save(self, *args, **kwargs):
+        self.location = self.location.lower()
+        return super(Investment, self).save(*args, **kwargs)

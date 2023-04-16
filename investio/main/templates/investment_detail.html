@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="user-investments-cards">
+    <div class="investment-card">
+        <div class="card mb-3">
+            {% if investment.img.url is not null %}
+            <img src="{{ investment.img.url }}" class="card-img" alt="investment profile photo">
+            {% else %}
+            <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
+                 alt="investment default photo">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ investment.name }}</h5>
+                <p class="card-text">{{ investment.about }}</p>
+                <p class="card-text"><small class="text-muted">Created {{ investment.date }}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

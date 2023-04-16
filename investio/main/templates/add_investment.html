@@ -6,8 +6,7 @@
 
 <div class="d-flex justify-content-center">
 <div class="jumbotron w-50 p-3 forms-margin-padding">
-    <h1>Add investment</h1>
-    <form method="post" enctype="multipart/form-data" action="../" class="form-group addContent">
+    <form method="post" enctype="multipart/form-data" action="/add_investment/" class="form-group addContent">
 
         {% csrf_token %}
         {{ form|crispy }}

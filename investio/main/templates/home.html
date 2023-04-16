@@ -12,17 +12,24 @@
             {% endif %}
         </h1>
 
-        <p class="lead">All investments in one place!</p>
+        <p class="lead">Wszystkie inwestycje w jednym miejscu!</p>
         <hr class="my-4">
-        <p>You've found the right place! Checkout the investments near you będziesz bogaty kuuuuuurwa!!!!</p>
-        <a class="btn btn-warning btn-lg" href="/cafes" role="button">Show Me!</a>
+        <p>Nigdy nie będzie lepszego czasu na inwestycje.</p>
     </div>
     <br>
+
+    <form action="../" method="GET">
+        <div class="input-group investment-card">
+            <input type="search" name="location" class="form-control rounded" placeholder="Wpisz miejscowość..." aria-label="Search"
+                   aria-describedby="search-addon"/>
+            <button type="submit" class="btn btn-outline-primary">szukaj</button>
+        </div>
+    </form>
 </div>
 
 {% for item in investments %}
-    <div class="investment-card">
-        <a href="investment_detail">
+<div class="investment-card">
+    <a href="{{ item.get_absolute_url }}">
         <div class="card mb-1">
             <div class="row no-gutters">
                 <div class="col-md-2">
@@ -42,8 +49,8 @@
                 </div>
             </div>
         </div>
-        </a>
-    </div>
+    </a>
+</div>
 
 {% endfor %}
 {% endblock %}
