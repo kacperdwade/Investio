@@ -39,3 +39,8 @@ a:active {
 
 .footer{
 }
+
+.carousel-miniatures{
+    width: 120px;
+    height: 35px;
+    }

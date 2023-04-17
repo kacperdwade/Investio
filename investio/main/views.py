@@ -44,7 +44,6 @@ def add_investment(request):
                 tor=form.cleaned_data['tor'],
             )
             new_investment.save()
-            print(new_investment)
             request.user.investment.add(new_investment)
             return redirect('../')
     context = {
