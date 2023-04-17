@@ -27,14 +27,14 @@
     </form>
 </div>
 
-{% for item,i in investments %}
+{% for item in investments %}
 <div class="investment-card">
     <a href="{{ item.get_absolute_url }}">
         <div class="card mb-1">
             <div class="row no-gutters">
                 <div class="col-md-2">
-                    {% if i.img.url is not null %}
-                    <img src="{{ i.img.url }}" class="card-img" alt="investment profile photo">
+                    {% if item.main_img.url is not null %}
+                    <img src="{{ item.main_img.url }}" class="card-img" alt="investment profile photo">
                     {% else %}
                     <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
                          alt="investment default photo">

@@ -4,10 +4,20 @@ from django.urls import reverse
 
 
 # Create your models here.
+def make_file_path_2(instance, filename):
+    id = instance.investment.id
+    path = f'images/{id}/{filename}'
+    return path
+
+def make_file_path_1(instance, filename):
+    id = instance.id
+    path = f'images/{id}/{filename}'
+    return path
 
 class Investment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="investment", null=True)
     name = models.CharField(max_length=50)
+    main_img = models.FileField(null=True, blank=True, upload_to=make_file_path_1)
     location = models.CharField(max_length=50)
     about = models.CharField(max_length=200)
     price = models.FloatField()
@@ -26,13 +36,8 @@ class Investment(models.Model):
         self.location = self.location.lower()
         return super(Investment, self).save(*args, **kwargs)
 
-
-def make_file_path(instance, filename):
-    id = instance.investment.id
-    path = f'images/{id}/{filename}'
-    return path
 class Image(models.Model):
     investment = models.ForeignKey(Investment, on_delete=models.CASCADE, related_name='image', null=True)
-    img = models.FileField(null=True, blank=True, upload_to=make_file_path)
+    img = models.FileField(null=True, blank=True, upload_to=make_file_path_2)
 
 

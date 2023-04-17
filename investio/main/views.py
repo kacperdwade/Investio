@@ -16,11 +16,9 @@ def home(request):
             print(investments)
     else:
         investments = list(Investment.objects.all())
-        test = [(i, Image.objects.filter(investment=i).first()) for i in list(Investment.objects.all())]
-        print(test)
     context = {
         'user': request.user,
-        'investments': test,
+        'investments': investments,
     }
     return render(request, 'home.html', context)
 
@@ -38,7 +36,7 @@ def add_investment(request):
         if form.is_valid():
             new_investment = Investment(
                 name=form.cleaned_data['name'],
-                #img=form.cleaned_data['img'],
+                main_img=form.cleaned_data['main_img'],
                 location=form.cleaned_data['location'],
                 about=form.cleaned_data['about'],
                 price=form.cleaned_data['price'],
