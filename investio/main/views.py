@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import AddNewInvestment
-from .models import Investment
+from .models import Investment, Image
 
 
 # Create your views here.
@@ -16,9 +16,11 @@ def home(request):
             print(investments)
     else:
         investments = list(Investment.objects.all())
+        test = [(i, Image.objects.filter(investment=i).first()) for i in list(Investment.objects.all())]
+        print(test)
     context = {
         'user': request.user,
-        'investments': investments,
+        'investments': test,
     }
     return render(request, 'home.html', context)
 
@@ -36,7 +38,7 @@ def add_investment(request):
         if form.is_valid():
             new_investment = Investment(
                 name=form.cleaned_data['name'],
-                img=form.cleaned_data['img'],
+                #img=form.cleaned_data['img'],
                 location=form.cleaned_data['location'],
                 about=form.cleaned_data['about'],
                 price=form.cleaned_data['price'],
@@ -45,6 +47,12 @@ def add_investment(request):
             )
             new_investment.save()
             request.user.investment.add(new_investment)
+            images = request.FILES.getlist('img')
+            for image in images:
+                photo = Image.objects.create(
+                    investment=new_investment,
+                    img=image
+                )
             return redirect('../')
     context = {
         'user': request.user,

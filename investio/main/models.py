@@ -8,7 +8,6 @@ from django.urls import reverse
 class Investment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="investment", null=True)
     name = models.CharField(max_length=50)
-    img = models.ImageField(null=True, blank=True, upload_to="images/")
     location = models.CharField(max_length=50)
     about = models.CharField(max_length=200)
     price = models.FloatField()
@@ -26,3 +25,14 @@ class Investment(models.Model):
     def save(self, *args, **kwargs):
         self.location = self.location.lower()
         return super(Investment, self).save(*args, **kwargs)
+
+
+def make_file_path(instance, filename):
+    id = instance.investment.id
+    path = f'images/{id}/{filename}'
+    return path
+class Image(models.Model):
+    investment = models.ForeignKey(Investment, on_delete=models.CASCADE, related_name='image', null=True)
+    img = models.FileField(null=True, blank=True, upload_to=make_file_path)
+
+

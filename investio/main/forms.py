@@ -8,3 +8,4 @@ class AddNewInvestment(forms.Form):
     price = forms.FloatField(label="Price")
     ror = forms.IntegerField(label="RoR")
     tor = forms.IntegerField(label="ToR")
+
