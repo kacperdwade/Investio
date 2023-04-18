@@ -29,6 +29,7 @@ def about(request):
     }
     return render(request, 'about.html', context)
 
+
 def add_investment(request):
     form = AddNewInvestment()
     if request.method == 'POST':
@@ -67,15 +68,16 @@ def user_investments(request):
     }
     return render(request, 'user_investments.html', context)
 
+
 def investment_detail_view(request, id_):
     investment = get_object_or_404(Investment, id=id_)
     try:
-        investment_profile_photo=investment.main_img.url
+        investment_profile_photo = investment.main_img.url
     except ValueError:
         investment_profile_photo = 'images/no-image-icon.jpg'
     investment_images = list(Image.objects.filter(investment_id=investment.id))
-    investment_images=[image.img.url for image in investment_images]
-    investment_images.append(investment_profile_photo)
+    # investment_images=[image.img.url for image in investment_images]
+    # investment_images.append(investment_profile_photo)
     context = {
         'user': request.user,
         'investment': investment,
