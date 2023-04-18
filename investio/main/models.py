@@ -1,6 +1,9 @@
+from fileinput import filename
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from datetime import datetime as dt
 
 
 # Create your models here.
@@ -11,7 +14,9 @@ def make_file_path_2(instance, filename):
 
 def make_file_path_1(instance, filename):
     id = instance.id
-    path = f'images/{id}/{filename}'
+    date=str(dt.now())+"."+filename.split(".")[-1]
+    print(date)
+    path = f'images/profile/{date}'
     return path
 
 class Investment(models.Model):
