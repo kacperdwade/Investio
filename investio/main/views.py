@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import AddNewInvestment
-from .models import Investment
+from .models import Investment, Image
 
 
 # Create your views here.
@@ -29,6 +29,7 @@ def about(request):
     }
     return render(request, 'about.html', context)
 
+
 def add_investment(request):
     form = AddNewInvestment()
     if request.method == 'POST':
@@ -36,7 +37,7 @@ def add_investment(request):
         if form.is_valid():
             new_investment = Investment(
                 name=form.cleaned_data['name'],
-                img=form.cleaned_data['img'],
+                main_img=form.cleaned_data['main_img'],
                 location=form.cleaned_data['location'],
                 about=form.cleaned_data['about'],
                 price=form.cleaned_data['price'],
@@ -45,6 +46,12 @@ def add_investment(request):
             )
             new_investment.save()
             request.user.investment.add(new_investment)
+            images = request.FILES.getlist('img')
+            for image in images:
+                photo = Image.objects.create(
+                    investment=new_investment,
+                    img=image
+                )
             return redirect('../')
     context = {
         'user': request.user,
@@ -61,11 +68,19 @@ def user_investments(request):
     }
     return render(request, 'user_investments.html', context)
 
+
 def investment_detail_view(request, id_):
     investment = get_object_or_404(Investment, id=id_)
-    # investments = list(Investment.objects.all())
+    try:
+        investment_profile_photo = investment.main_img.url
+    except ValueError:
+        investment_profile_photo = 'images/no-image-icon.jpg'
+    investment_images = list(Image.objects.filter(investment_id=investment.id))
+    # investment_images=[image.img.url for image in investment_images]
+    # investment_images.append(investment_profile_photo)
     context = {
         'user': request.user,
         'investment': investment,
+        'images': investment_images,
     }
     return render(request, 'investment_detail.html', context)
