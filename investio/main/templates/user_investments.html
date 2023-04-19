@@ -4,31 +4,41 @@
 
 <div class="user-investments-cards">
     {% for item in investments %}
-
-    <div class="investment-card">
-        <a href="{{ item.get_absolute_url }}">
-            <div class="card mb-1">
-                <div class="row no-gutters">
-                    <div class="col-md-2">
-                        {% if item.img.url is not null %}
-                        <img src="{{ item.img.url }}" class="card-img" alt="investment profile photo">
+<div class="investment-card">
+    <a href="{{ item.get_absolute_url }}">
+        <div class="card mb-1">
+            <div class="row no-gutters">
+                <div class="col-md-2 card-profile-photo">
+                        {% if item.main_img.url is not null %}
+                        <img src="{{ item.main_img.url }}" class="card-img" alt="investment profile photo">
                         {% else %}
                         <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
                              alt="investment default photo">
                         {% endif %}
+                        <p class="field-location"><i class="fa-solid fa-location-dot"></i> {{item.location.title }}</p>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.about }}</p>
+                        <p class="card-text"><small class="text-muted">Created {{ item.date }}</small></p>
                     </div>
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ item.name }}</h5>
-                            <p class="card-text">{{ item.about }}</p>
-                            <p class="card-text"><small class="text-muted">Created {{ item.date }}</small></p>
-                        </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-body">
+                        <h5 class="card-title">PRICE : {{item.price}} PLN</h5>
+                        <p class="card-text">ROR : {{item.ror}} %</p>
+                        <p class="card-text">TOR : {{item.tor}} mnth's</p>
+                    </div>
+                    <div class="edit-investment">
+                        <button class="btn btn-edit-investment"> Edit <i class="fa-regular fa-pen-to-square"></i></button>
                     </div>
                 </div>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
+</div>
 
-    {% endfor %}
+{% endfor %}
 </div>
 {% endblock %}

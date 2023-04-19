@@ -84,3 +84,11 @@ def investment_detail_view(request, id_):
         'images': investment_images,
     }
     return render(request, 'investment_detail.html', context)
+
+
+def edit_investment(request, id_):
+
+    context = {
+        'user': request.user,
+    }
+    return render(request, 'edit_investment.html', context)

@@ -9,15 +9,12 @@ from datetime import datetime as dt
 # Create your models here.
 def make_file_path_2(instance, filename):
     id = instance.investment.id
-    path = f'images/{id}/{filename}'
+    path = f'images/{id}/{dt.now()}+filename.split(".")[-1]'
     return path
 
 def make_file_path_1(instance, filename):
     id = instance.id
-    # date=str(dt.now())+"."+filename.split(".")[-1]
-    # print(date)
-    # path = f'images/profile/{date}'
-    path = f'images/{id}/main/{filename}'
+    path = f'images/{id}/main/{dt.now()}+filename.split(".")[-1]'
     print(path)
     return path
 
@@ -37,6 +34,9 @@ class Investment(models.Model):
 
     def get_absolute_url(self):
         return reverse("main:investment-detail-view", kwargs={"id_": self.id})
+
+    def get_absolute_url_edit(self):
+        return reverse("main:edit-investment", kwargs={"id_": self.id})
 
     #
     def save(self, *args, **kwargs):

@@ -54,8 +54,18 @@ a:active {
     background-color: #efab0a;
 }
 
+.btn-edit-investment {
+    background-color: #efab0a;
+    text-align: center;
+    width: 100%;
+}
+
 .link-add-investment {
     color: black;
+}
+
+.edit-investment {
+    text-align: right;
 }
 
 .navbar {
@@ -65,8 +75,11 @@ a:active {
 }
 
 .jumbotron {
-    background-image: url("../../static/images/5.jpg");
-    background-size:cover;
     background-color:#efab0a;
+}
+
+.field-location {
+    text-align: bottom;
+    margin-bottom: 0px;
 }
 
