@@ -67,6 +67,12 @@
             <p class="card-text">{{ investment.about }}</p>
             <p class="card-text"><small class="text-muted">Created {{ investment.date }}</small></p>
         </div>
+        <div class="inline-block">
+            {% if user.is_authenticated %}
+            <button class="btn btn-edit-investment"> Edit <i class="fa-regular fa-pen-to-square"></i></button>
+            <button class="btn btn-edit-investment"> Delete <i class="fa-solid fa-trash"></i></button>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

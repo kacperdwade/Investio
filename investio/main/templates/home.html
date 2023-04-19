@@ -33,13 +33,17 @@
         <div class="card mb-1">
             <div class="row no-gutters">
                 <div class="col-md-2 card-profile-photo">
+                    <div class="image-field">
                         {% if item.main_img.url is not null %}
                         <img src="{{ item.main_img.url }}" class="card-img" alt="investment profile photo">
                         {% else %}
                         <img src="{% static 'images/no-image-icon.jpg' %}" class="card-img"
                              alt="investment default photo">
                         {% endif %}
+                    </div>
+                    <div style ="height: 15%">
                         <p class="field-location"><i class="fa-solid fa-location-dot"></i> {{item.location.title }}</p>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
