@@ -14,9 +14,11 @@ def make_file_path_2(instance, filename):
 
 def make_file_path_1(instance, filename):
     id = instance.id
-    date=str(dt.now())+"."+filename.split(".")[-1]
-    print(date)
-    path = f'images/profile/{date}'
+    # date=str(dt.now())+"."+filename.split(".")[-1]
+    # print(date)
+    # path = f'images/profile/{date}'
+    path = f'images/{id}/main/{filename}'
+    print(path)
     return path
 
 class Investment(models.Model):
@@ -38,6 +40,14 @@ class Investment(models.Model):
 
     #
     def save(self, *args, **kwargs):
+        if self.id is None:
+            main_image = self.main_img
+            self.main_img = None
+            super(Investment, self).save(*args, **kwargs)
+            self.main_img = main_image
+            if 'force_insert' in kwargs:
+                kwargs.pop('force_insert')
+        super(Investment, self).save(*args, **kwargs)
         self.location = self.location.lower()
         return super(Investment, self).save(*args, **kwargs)
 
